@@ -1,0 +1,26 @@
+//pertama - jika belum config//
+npm install -g firebase-tools
+firebase login
+firebase init
+select hosting
+Select the default Firebase project
+Set your public directory to dist
+spa yes
+rewrites yes
+npm run build
+firebase deploy --only hosting
+
+//pertama -  jika sudah ada config//
+npm install -g firebase-tools
+firebase login
+npm run build
+firebase deploy --only hosting
+
+
+//update
+npm run build && firebase deploy --only hosting 
+
+
+//URL
+https://lmsiainsalatiga.web.app/
+https://lmsiainsalatiga.firebaseapp.com/

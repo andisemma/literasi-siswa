@@ -16,15 +16,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "User" */ '../views/Home.vue'),
   },
   {
-    path: '/user',
-    name: 'User',
-    component: () => import(/* webpackChunkName: "User" */ '../views/User.vue'),
-  },
-  {
-    path: '/user/:id',
-    name: 'Detail',
-    component: () =>
-      import(/* webpackChunkName: "UserDetail" */ '../views/UserDetail.vue'),
+    path: '/:id',
+    name: 'artikel',
+    component: () => import(/* webpackChunkName: "User" */ '../views/Artikel.vue'),
   },
   {
     path: '/admin',
@@ -34,7 +28,7 @@ const routes = [
   },
   {
     path: '/admin/:id',
-    name: 'admin',
+    name: 'adminDetails',
     component: () =>
       import(/* webpackChunkName: "UserDetail" */ '../views/adminDetail.vue'),
   },
