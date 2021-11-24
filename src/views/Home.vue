@@ -1,9 +1,9 @@
-
 <template>
   <div>
     <VAlert type="info" :value="true">
-    Selamat Datang di siLIT Sistem Literasi SDN Sidorejo Lor 3 Salatiga
-  </VAlert>
+      Selamat Datang di MELISA (MEdia LIterasi SiswA) SDN Sidorejo Lor 3
+      Salatiga
+    </VAlert>
     <vContainer class="d-flex d-flex-wrap" v-if="pak">
       <!-- list Pertemuan -->
       <vContainer v-if="pak" class="d-flex flex-wrap">
@@ -32,20 +32,14 @@
           </p>
 
           <p class="text-justify px-3">{{ pak.snap }} .....</p>
-
-  
         </v-card>
       </vContainer>
-
-    
     </vContainer>
-
-  
   </div>
 </template>
 
 <script>
-import { getData, setData, del } from '../firebase/firestore'
+import { getData, setData, del, fireSetDataWithId } from '../firebase/firestore'
 import dayjs from 'dayjs'
 
 export default {
@@ -66,6 +60,30 @@ export default {
         kategori: '',
       },
       items: ['Cerpen', 'Puisi', 'Berita', 'Pelajaran', 'Sejarah', 'Lainnya'],
+      email: [
+        'sitimusrifah50@guru.sd.belajar.id',
+        'nurardiani66@guru.sd.belajar.id',
+        'nuurruwaida57@guru.sd.belajar.id',
+        'caturdarmanto43@admin.sd.belajar.id',
+        'ranindyakartika26@guru.sd.belajar.id',
+        'rizafatmawati11@guru.sd.belajar.id',
+        'hanieklathifah46@guru.sd.belajar.id',
+        'nurnihayati35@guru.sd.belajar.id',
+        'parmusi86@guru.sd.belajar.id',
+        'yantisupriyatun71@guru.sd.belajar.id',
+        'irnawati344@guru.sd.belajar.id',
+        'nilakrisnawati91@guru.sd.belajar.id',
+        'fitrikurniawati45@guru.sd.belajar.id',
+        'endahfatmawati60@guru.sd.belajar.id',
+        'trifenahistoryani82@guru.sd.belajar.id',
+        'septinemaryani39@guru.sd.belajar.id',
+        'waluyo18@admin.sd.belajar.id',
+        'srisulastri09@guru.sd.belajar.id',
+        'sumpono55@guru.sd.belajar.id',
+        'marditawirayanti03@guru.sd.belajar.id',
+        'aprinasavitri14@guru.sd.belajar.id',
+        'ekoprastyo30@guru.sd.belajar.id',
+      ],
     }
   },
   methods: {
@@ -108,15 +126,20 @@ export default {
       })
     },
     getData() {
-      getData('article', 'groupId', '!=', null).then(
-        (res) => (this.pak = res)
-      )
+      getData('article', 'groupId', '!=', null).then((res) => (this.pak = res))
     },
     tgl(date) {
       return dayjs(date).format('DD-MM-YYYY HH:mm:ss')
     },
     del(index) {
       del('article', index).then(this.getData())
+    },
+    addEmail() {
+      this.email.forEach((item) => {
+        fireSetDataWithId('admin', item, { isAdmin: true }).then(
+          console.log(item)
+        )
+      })
     },
   },
   computed: {},
@@ -133,32 +156,56 @@ export default {
   right: 3%;
 }
 
-.bounce { 
-        -animation:bounce .40s linear;  
-} 
+.bounce {
+  -animation: bounce 0.4s linear;
+}
 
 @keyframes bounce {
-        0%{ -moz-transform:scale(0); opacity:0;}
-        50%{ -moz-transform:scale(1.3); opacity:0.4; }
-        75%{ -moz-transform:scale(0.9); opacity:0.7;}
-        100%{ -moz-transform:scale(1); opacity:1;}
+  0% {
+    -moz-transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    -moz-transform: scale(1.3);
+    opacity: 0.4;
+  }
+  75% {
+    -moz-transform: scale(0.9);
+    opacity: 0.7;
+  }
+  100% {
+    -moz-transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes bounce {
-        0%{ -webkit-transform:scale(0); opacity:0;}
-        50%{ -webkit-transform:scale(1.3); opacity:0.4;}
-        75%{ -webkit-transform:scale(0.9); opacity:0.7;}
-        100%{ -webkit-transform:scale(1); opacity:1;}
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(1.3);
+    opacity: 0.4;
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    opacity: 0.7;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
 }
 .pulse {
-   margin:100px;
+  margin: 100px;
   display: inline-block;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background: orange;
   cursor: pointer;
-  box-shadow: 0 0 0 rgba(204,169,44, 0.4);
+  box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
   animation: pulse 2s infinite;
 }
 .pulse:hover {
@@ -167,27 +214,27 @@ export default {
 
 @-webkit-keyframes pulse {
   0% {
-    -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
   }
   70% {
-      -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+    -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
   }
   100% {
-      -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
   }
 }
 @keyframes pulse {
   0% {
-    -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
-    box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
   }
   70% {
-      -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
-      box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+    -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
   }
   100% {
-      -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
-      box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
   }
 }
 </style>

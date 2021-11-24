@@ -2,7 +2,7 @@
   <v-app-bar color="white" elevation="12">
     <img src="@/assets/logo.png" height="32" width="32" alt="" />
 
-    <h1>E-Literasi</h1>
+    <h1>MELISA</h1>
 
     <VSpacer />
     <span></span>
@@ -40,7 +40,7 @@
           </v-img>
           <VCardTitle> {{ $store.state.profile.displayName }} </VCardTitle>
           <v-card-subtitle class="pb-0">
-            Guru berintegritas dan deikasi tinggi ❤️
+            Guru berintegritas dan dedikasi tinggi ❤️
           </v-card-subtitle>
 
           <VCardActions>
@@ -69,16 +69,17 @@ export default {
     },
     signIn() {
       Auth.googleLogin().then((res) => {
-        let profile =( res || {email:null})
+        let profile = res || { email: null }
         console.log(res)
-        getOnce('admin', profile.email)
-        .then(res => {
-          if(res){
+        getOnce('admin', profile.email).then((res) => {
+          if (res) {
             console.log('isAdmin')
-            this.$store.commit('setProfile', {...profile, ...{isAdmin: true}})
+            this.$store.commit('setProfile', {
+              ...profile,
+              ...{ isAdmin: true },
+            })
             this.$router.push('/admin')
-            }  
-            
+          }
         })
       })
     },
