@@ -185,7 +185,7 @@ export default {
       return dayjs(date).format('DD-MM-YYYY HH:mm:ss')
     },
     del(index) {
-      del('article', index).then(this.getData())
+      del('article', index).then(this.get())
     },
   },
   computed: {},
