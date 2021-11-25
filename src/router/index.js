@@ -16,21 +16,27 @@ const routes = [
     component: () => import(/* webpackChunkName: "User" */ '../views/Home.vue'),
   },
   {
-    path: '/:id',
-    name: 'artikel',
-    component: () => import(/* webpackChunkName: "User" */ '../views/Artikel.vue'),
+    path: '/artikel/:id',
+    name: 'Artikel',
+    component: () =>
+      import(/* webpackChunkName: "User" */ '../views/Artikel.vue'),
   },
   {
     path: '/admin',
-    name: 'admin',
+    name: 'Admin',
     component: () =>
-      import(/* webpackChunkName: "UserDetail" */ '../views/admin.vue'),
+      import(/* webpackChunkName: "admin" */ '../views/Admin.vue'),
   },
   {
     path: '/admin/:id',
     name: 'adminDetails',
     component: () =>
-      import(/* webpackChunkName: "UserDetail" */ '../views/adminDetail.vue'),
+      import(/* webpackChunkName: "adminDetail" */ '../views/adminDetail.vue'),
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import(/* webpackChunkName: "404" */ '../views/404.vue'),
+    name: 'NotFound',
   },
 ]
 

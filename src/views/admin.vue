@@ -171,12 +171,12 @@ export default {
       }
       setData('article', header).then(() => {
         setData('details', this.article).then(() => {
-          this.getData()
+          this.get()
           this.close()
         })
       })
     },
-    getData() {
+    get() {
       getData('article', 'groupId', '==', this.$store.state.profile.email).then(
         (res) => (this.pak = res)
       )
@@ -190,7 +190,7 @@ export default {
   },
   computed: {},
   mounted() {
-    this.getData()
+    this.get()
   },
 }
 </script>

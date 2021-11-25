@@ -60,35 +60,11 @@ export default {
         kategori: '',
       },
       items: ['Cerpen', 'Puisi', 'Berita', 'Pelajaran', 'Sejarah', 'Lainnya'],
-      email: [
-        'sitimusrifah50@guru.sd.belajar.id',
-        'nurardiani66@guru.sd.belajar.id',
-        'nuurruwaida57@guru.sd.belajar.id',
-        'caturdarmanto43@admin.sd.belajar.id',
-        'ranindyakartika26@guru.sd.belajar.id',
-        'rizafatmawati11@guru.sd.belajar.id',
-        'hanieklathifah46@guru.sd.belajar.id',
-        'nurnihayati35@guru.sd.belajar.id',
-        'parmusi86@guru.sd.belajar.id',
-        'yantisupriyatun71@guru.sd.belajar.id',
-        'irnawati344@guru.sd.belajar.id',
-        'nilakrisnawati91@guru.sd.belajar.id',
-        'fitrikurniawati45@guru.sd.belajar.id',
-        'endahfatmawati60@guru.sd.belajar.id',
-        'trifenahistoryani82@guru.sd.belajar.id',
-        'septinemaryani39@guru.sd.belajar.id',
-        'waluyo18@admin.sd.belajar.id',
-        'srisulastri09@guru.sd.belajar.id',
-        'sumpono55@guru.sd.belajar.id',
-        'marditawirayanti03@guru.sd.belajar.id',
-        'aprinasavitri14@guru.sd.belajar.id',
-        'ekoprastyo30@guru.sd.belajar.id',
-      ],
     }
   },
   methods: {
     detail(id) {
-      this.$router.push(`/${id}`)
+      this.$router.push(`/artikel/${id}`)
     },
     add() {
       this.dialog = !this.dialog

@@ -69,15 +69,10 @@ export default {
     },
     signIn() {
       Auth.googleLogin().then((res) => {
-        let profile = res || { email: null }
-        console.log(res)
-        getOnce('admin', profile.email).then((res) => {
+        this.$store.commit('setProfile', res)
+        getOnce('admin', res.email).then((res) => {
           if (res) {
             console.log('isAdmin')
-            this.$store.commit('setProfile', {
-              ...profile,
-              ...{ isAdmin: true },
-            })
             this.$router.push('/admin')
           }
         })

@@ -1,13 +1,14 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import createPersistedState from "vuex-persistedstate";
-Vue.use(Vuex);
+import Vue from 'vue'
+import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     profile: {},
     parent: [],
-    children: []
+    children: [],
+    isAdmin: [],
   },
   mutations: {
     setProfile(state, data) {
@@ -21,12 +22,10 @@ export default new Vuex.Store({
     },
     del(state, [index, stateName]) {
       state[stateName].splice(index, 1)
-    }
+    },
   },
-  getters: {
-
-  },
+  getters: {},
   actions: {},
   modules: {},
   plugins: [createPersistedState()],
-});
+})
