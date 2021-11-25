@@ -1,7 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+import store from '../store/index'
 Vue.use(VueRouter)
+
+const guard = (to, from, next) => {
+  console.log(store.state.profile.isAdmin)
+  if (!store.state.profile.isAdmin) next({ name: 'Home' })
+  else next()
+}
 
 const routes = [
   {
@@ -26,12 +32,14 @@ const routes = [
     name: 'Admin',
     component: () =>
       import(/* webpackChunkName: "admin" */ '../views/Admin.vue'),
+    beforeEnter: guard,
   },
   {
     path: '/admin/:id',
     name: 'adminDetails',
     component: () =>
       import(/* webpackChunkName: "adminDetail" */ '../views/adminDetail.vue'),
+    beforeEnter: guard,
   },
   {
     path: '/:pathMatch(.*)*',
